@@ -30,8 +30,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String ACCOUNT_SID = "AC1dd5951404e01b3b3ed5acff78a1148e";
-    public static final String AUTH_TOKEN = "91246638a3d2702d8fc8f1a37edf0f3b";
+    public static final String ACCOUNT_SID = "PUT YOUR ACCOUNT SID";
+    public static final String AUTH_TOKEN = "PUT YOUR AUTH TOKEN";
     private static final String TAG = "Phone OTP";
 
     private EditText number,otp;
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendOTP(String toPhoneNumber, String message){
         OkHttpClient client = new OkHttpClient();
-        String url = "https://verify.twilio.com/v2/Services/VA1f436cbb8deaddd8dd9450a97798ba3b/Verifications";
+        String url = "https://verify.twilio.com/v2/Services/"+AUTH_TOKEN+"/Verifications";
         String base64EncodedCredentials = "Basic " + Base64.encodeToString((ACCOUNT_SID + ":" + AUTH_TOKEN).getBytes(), Base64.NO_WRAP);
 
         RequestBody body = new FormBody.Builder()
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
     private void verifyOTP (String phoneNumber , String code){
 
         OkHttpClient client = new OkHttpClient();
-        String url = "https://verify.twilio.com/v2/Services/VA1f436cbb8deaddd8dd9450a97798ba3b/VerificationCheck";
+        String url = "https://verify.twilio.com/v2/Services/"+AUTH_TOKEN+"/VerificationCheck";
         String base64EncodedCredentials = "Basic " + Base64.encodeToString((ACCOUNT_SID + ":" + AUTH_TOKEN).getBytes(), Base64.NO_WRAP);
 
         RequestBody body = new FormBody.Builder()
